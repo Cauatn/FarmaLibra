@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import elipse from "@/assets/elipse_tela_de_inicio.png";
-
 import cliente from "@/assets/imagem_cliente.png";
 import farmaceutico from "@/assets/imagem_farmaceutico_tr.png";
 import Header from "@/components/Header";
@@ -9,6 +7,8 @@ import listaDeVideos from "@/db/videos";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 function Chat() {
+  const [hoveredVideo, setHoveredVideo] = useState("");
+
   return (
     <div className="h-full bg-[#F4F4F4]">
       <div className="mx-auto h-full max-w-7xl space-y-4">
@@ -30,7 +30,57 @@ function Chat() {
                   <p className="mr-9 text-xl font-bold">Cliente</p>
                 </div>
               </DialogTrigger>
-              <DialogContent>asasd</DialogContent>
+              <DialogContent className="flex max-w-fit space-x-4">
+                <div className="mx-auto max-w-md space-y-4 p-4">
+                  <BotaoAtendimento
+                    cor="bg-green-500 hover:bg-green-600"
+                    texto="SAUDAÇÕES / ACOLHIMENTO"
+                    videoId="cG3UGLZWJzg"
+                    onHover={setHoveredVideo}
+                  />
+                  <BotaoAtendimento
+                    cor="bg-red-500 hover:bg-red-600"
+                    texto="PRESCRIÇÕES E DOCUMENTOS"
+                    videoId="1MuChMVxNOU"
+                    onHover={setHoveredVideo}
+                  />
+                  <BotaoAtendimento
+                    cor="bg-yellow-500 hover:bg-yellow-600"
+                    texto="PARA QUE SERVE ESSE MEDICAMENTO?"
+                    videoId="MEw53FHdulU"
+                    onHover={setHoveredVideo}
+                  />
+                  <BotaoAtendimento
+                    cor="bg-orange-500 hover:bg-orange-600"
+                    texto="COMO USAR O MEDICAMENTO"
+                    videoId="oN6d18fAhrw"
+                    onHover={setHoveredVideo}
+                  />
+                  <BotaoAtendimento
+                    cor="bg-purple-500 hover:bg-purple-600"
+                    texto="ALERTAS"
+                    videoId="xSlB7hv0pjg"
+                    onHover={setHoveredVideo}
+                  />
+                  <div className="rounded-md bg-gray-800 p-4 text-white">
+                    <p className="text-sm">
+                      AVISO: Não divulgar ou passar a terceiros qualquer
+                      informação contida neste sistema.
+                    </p>
+                  </div>
+                </div>
+                <div className="h-[400px] w-[1px] bg-gray-400"></div>
+                <div>
+                  <iframe
+                    width="560"
+                    height="315"
+                    src={`https://www.youtube.com/embed/${hoveredVideo}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </DialogContent>
             </Dialog>
             <Dialog>
               <DialogTrigger asChild>
@@ -55,14 +105,14 @@ function Chat() {
 }
 
 function ChatArea() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };
 
-  const handleKeyPress = (e) => {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       const matchedVideo = listaDeVideos.find(
         (video) => video.texto.toLowerCase() === input.toLowerCase(),
@@ -78,7 +128,10 @@ function ChatArea() {
           },
         ]);
       } else {
-        setMessages([...messages, { sender: "client", content: input }]);
+        setMessages([
+          ...messages,
+          { sender: "client", content: input, videoId: "" },
+        ]);
       }
 
       setInput("");
@@ -108,7 +161,32 @@ function ChatArea() {
   );
 }
 
-function ClientMessage({ message }) {
+interface AtendimentoProps {
+  cor: string;
+  texto: string;
+  videoId: string;
+  onHover: (videoId: string) => void;
+}
+
+function BotaoAtendimento({ cor, texto, videoId, onHover }: AtendimentoProps) {
+  return (
+    <Button
+      className={`w-full justify-start ${cor} text-white`}
+      variant="ghost"
+      onMouseEnter={() => onHover(videoId)}
+    >
+      {texto}
+    </Button>
+  );
+}
+
+interface Message {
+  sender: string;
+  content: string;
+  videoId: string;
+}
+
+function ClientMessage({ message }: { message: Message }) {
   return (
     <div className="relative mb-4 flex items-center justify-start">
       <img src={cliente} alt="" className="absolute -left-8 top-3 w-10" />
@@ -117,7 +195,7 @@ function ClientMessage({ message }) {
           <iframe
             width="300"
             height="200"
-            src={`https://www.youtube.com/embed/${message.videoId}`}
+            src={`https://www.youtube.com/embed/${message.videoId}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=${message.videoId}`}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -130,7 +208,7 @@ function ClientMessage({ message }) {
   );
 }
 
-function PharmacistMessage({ message }) {
+function PharmacistMessage({ message }: { message: Message }) {
   return (
     <div className="relative mb-4 flex items-center justify-end">
       <div className="rounded-lg bg-[#FFCD00] p-2">
@@ -138,7 +216,7 @@ function PharmacistMessage({ message }) {
           <iframe
             width="300"
             height="200"
-            src={`https://www.youtube.com/embed/${message.videoId}`}
+            src={`https://www.youtube.com/embed/${message.videoId}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=${message.videoId}`}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
