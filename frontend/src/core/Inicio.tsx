@@ -1,18 +1,11 @@
-import { Button } from "@/components/ui/button";
-import Univasf from "@/assets/univasf.png";
-import cim from "@/assets/cim.png";
 import elipse from "@/assets/elipse_tela_de_inicio.png";
-import cff from "@/assets/conselho-federal-de-farmacia.png";
 import {
-  Bell,
   Clock,
   GraduationCap,
   HelpCircle,
-  Home,
   MessageCircle,
   MessageSquare,
 } from "lucide-react";
-import Header from "@/components/Header";
 import cliente from "@/assets/imagem_cliente.png";
 import { useNavigate } from "react-router-dom";
 
