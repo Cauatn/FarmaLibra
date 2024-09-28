@@ -74,6 +74,12 @@
   animation: marquee 10s linear infinite;
 }
 
+.text-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(100%);

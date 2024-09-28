@@ -129,7 +129,9 @@ function ChatArea({ className, ...props }: CardProps) {
                   navigate("/chat");
                 }}
               >
-                <p className="text-marquee">{lista.texto}</p>
+                <div className="text-marquee-container">
+                  <p className="text-marquee">{lista.texto}</p>
+                </div>
               </Button>
             </CardFooter>
           </Card>
