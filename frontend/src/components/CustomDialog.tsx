@@ -64,7 +64,6 @@ function CustomDialog({ type }: { type: string }) {
             onHover={setHoveredVideo}
           />
           <BotaoAtendimento
-            cor="bg-yellow-500 hover:bg-yellow-600"
             texto="PARA QUE SERVE ESSE MEDICAMENTO?"
             category="c3"
             videoId="MEw53FHdulU"

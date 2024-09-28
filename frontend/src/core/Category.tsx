@@ -51,7 +51,7 @@ function Category() {
   return (
     <div className="flex min-h-screen flex-col bg-[#F4F4F4]">
       <div className="mx-auto w-full max-w-7xl flex-grow space-y-4">
-        <Header />
+        <Header showBack />
         <main className="relative flex flex-grow flex-col items-center space-y-8">
           <div
             className={`z-20 flex h-20 w-[766px] items-center justify-center rounded-2xl ${cor} text-xl font-bold`}

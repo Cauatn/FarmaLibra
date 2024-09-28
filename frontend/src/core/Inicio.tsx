@@ -28,15 +28,14 @@ function Inicio() {
       />
       <div className="flex flex-1 items-center">
         <div className="relative flex w-2/3 flex-col space-y-20 p-8">
-          <div className="relative inline-flex h-14 w-[260px] items-center justify-between bg-white hover:cursor-pointer">
+          <div className="relative inline-flex h-14 w-[360px] items-center justify-between bg-white">
             <div className="h-full w-2 bg-[#FFCD00]"></div>
             <img
               src={cliente}
               alt=""
-              className="absolute -top-14 left-4 w-28"
+              className="absolute -top-14 left-0 w-28"
             />
-
-            <p className="mr-9 text-xl font-bold">Cliente</p>
+            <p className="ml-20 mr-9 text-2xl font-bold">Bem-Vindo Cliente</p>
           </div>
           <nav className="space-y-4">
             <button
@@ -78,7 +77,7 @@ function Inicio() {
             <button
               className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3"
               onClick={() => {
-                navigate("/");
+                navigate("/sugestion");
               }}
             >
               <MessageSquare />
