@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
-import listaDeVideos from "@/db/videos";
 import CustomDialog from "@/components/CustomDialog";
 
 import cliente from "@/assets/imagem_cliente.png";
 import farmaceutico from "@/assets/imagem_farmaceutico_tr.png";
+import { Item, useListVideos } from "@/db/buffer";
 
 function Chat() {
   return (
-    <div className="h-full bg-[#F4F4F4]">
-      <div className="mx-auto h-full max-w-7xl space-y-4">
+    <div className="m-0 flex min-h-screen w-full flex-col bg-[#F4F4F4]">
+      <div className="mx-auto flex h-full w-full max-w-7xl flex-col space-y-4">
         <Header />
         <main className="relative flex flex-col items-center space-y-8">
           <div className="z-20 flex h-20 w-[766px] items-center justify-center rounded-2xl bg-white font-bold">
@@ -27,65 +27,31 @@ function Chat() {
 }
 
 function ChatArea() {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [input, setInput] = useState("");
+  const [messages, setMessages] = useState<Item[]>([]);
+  const { items } = useListVideos();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInput(e.target.value);
-  };
-
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      const matchedVideo = listaDeVideos.find(
-        (video) => video.texto.toLowerCase() === input.toLowerCase(),
-      );
-
-      if (matchedVideo) {
-        setMessages([
-          ...messages,
-          {
-            sender: matchedVideo.userType,
-            content: matchedVideo.texto,
-            videoId: matchedVideo.videoId,
-          },
-        ]);
-      } else {
-        setMessages([
-          ...messages,
-          { sender: "client", content: input, videoId: "" },
-        ]);
-      }
-
-      setInput("");
-    }
-  };
+  useEffect(() => {
+    setMessages(items);
+  }, [items]);
 
   return (
     <div className="w-full p-4">
       <div className="chat-messages">
         {messages.map((message, index) =>
-          message.sender === "client" ? (
+          message.action === "Cliente" ? (
             <ClientMessage key={index} message={message} />
           ) : (
             <PharmacistMessage key={index} message={message} />
           ),
         )}
       </div>
-      <input
-        type="text"
-        value={input}
-        onChange={handleChange}
-        onKeyPress={handleKeyPress}
-        className="mt-4 w-full rounded border p-2"
-        placeholder="Digite sua mensagem..."
-      />
     </div>
   );
 }
 
 interface Message {
-  sender: string;
-  content: string;
+  action: string;
+  message: string;
   videoId: string;
 }
 
@@ -104,7 +70,7 @@ function ClientMessage({ message }: { message: Message }) {
             allowFullScreen
           ></iframe>
         ) : (
-          message.content
+          message.message
         )}
       </div>
     </div>
@@ -125,7 +91,7 @@ function PharmacistMessage({ message }: { message: Message }) {
             allowFullScreen
           ></iframe>
         ) : (
-          message.content
+          message.message
         )}
       </div>
       <img

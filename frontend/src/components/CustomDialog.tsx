@@ -1,4 +1,9 @@
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Button } from "./ui/button";
 import cliente from "@/assets/imagem_cliente.png";
 import farmaceutico from "@/assets/imagem_farmaceutico_tr.png";
@@ -6,12 +11,15 @@ import { useState } from "react";
 import listaDeVideos from "@/db/videos";
 import { useActionStore } from "@/db/buffer";
 
+//TODO: ABSTRAIR OS BOTOES JUNTO COM CORES PARA UM HOOK
+
 function CustomDialog({ type }: { type: string }) {
   const [hoveredVideo, setHoveredVideo] = useState("");
-  const { action, setAction } = useActionStore();
+  const { setAction } = useActionStore();
 
   return (
     <Dialog>
+      <DialogTitle className="hidden"></DialogTitle>
       <DialogTrigger
         asChild
         onClick={() => {
@@ -44,32 +52,39 @@ function CustomDialog({ type }: { type: string }) {
       <DialogContent className="flex max-w-fit space-x-4">
         <div className="mx-auto max-w-md space-y-4 p-4">
           <BotaoAtendimento
-            cor="bg-green-500 hover:bg-green-600"
             texto="SAUDAÇÕES / ACOLHIMENTO"
+            category="c1"
             videoId="cG3UGLZWJzg"
             onHover={setHoveredVideo}
           />
           <BotaoAtendimento
-            cor="bg-red-500 hover:bg-red-600"
             texto="PRESCRIÇÕES E DOCUMENTOS"
+            category="c2"
             videoId="1MuChMVxNOU"
             onHover={setHoveredVideo}
           />
           <BotaoAtendimento
             cor="bg-yellow-500 hover:bg-yellow-600"
             texto="PARA QUE SERVE ESSE MEDICAMENTO?"
+            category="c3"
             videoId="MEw53FHdulU"
             onHover={setHoveredVideo}
           />
           <BotaoAtendimento
-            cor="bg-orange-500 hover:bg-orange-600"
             texto="COMO USAR O MEDICAMENTO"
+            category="c4"
             videoId="oN6d18fAhrw"
             onHover={setHoveredVideo}
           />
           <BotaoAtendimento
-            cor="bg-purple-500 hover:bg-purple-600"
             texto="ALERTAS"
+            category="c5"
+            videoId="xSlB7hv0pjg"
+            onHover={setHoveredVideo}
+          />
+          <BotaoAtendimento
+            texto="ORIENTAÇÕES GERAIS E FINALIZAÇÃO DO ATENDIMENTO"
+            category="c6"
             videoId="xSlB7hv0pjg"
             onHover={setHoveredVideo}
           />
@@ -97,24 +112,46 @@ function CustomDialog({ type }: { type: string }) {
 }
 
 interface AtendimentoProps {
-  cor: string;
   texto: string;
   videoId: string;
+  category: string;
   onHover: (videoId: string) => void;
 }
 
 import { useNavigate } from "react-router-dom";
 
-function BotaoAtendimento({ cor, texto, videoId, onHover }: AtendimentoProps) {
+function BotaoAtendimento({
+  texto,
+  videoId,
+  category,
+  onHover,
+}: AtendimentoProps) {
   const navigate = useNavigate();
+  const { setCategory } = useActionStore();
+
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button
-          className={`w-full justify-start ${cor} text-white`}
+          className={`w-full justify-start ${
+            category === "c1"
+              ? "bg-[#95CC92]"
+              : category === "c2"
+                ? "bg-[#92AEE4]"
+                : category === "c3"
+                  ? "bg-[#F6B1EB]"
+                  : category === "c4"
+                    ? "bg-[#FFAD54]"
+                    : category === "c5"
+                      ? "bg-[#F26661]"
+                      : category === "c6"
+                        ? "bg-[#C1C1C1]"
+                        : ""
+          } text-black`}
           variant="ghost"
           onMouseEnter={() => onHover(videoId)}
           onClick={() => {
+            setCategory(category);
             navigate("/category");
           }}
         >
