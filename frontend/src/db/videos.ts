@@ -231,37 +231,37 @@ const listaDeVideos = [
   },
   {
     videoId: "J7_vsBvZRa4",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c2",
     texto: "Não vendemos esse medicamento sem receita.",
   },
   {
     videoId: "NHVQZs9YuoI",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c2",
     texto: "Por favor, preciso da sua identidade.",
   },
   {
     videoId: "9o8GarAXiTs",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c2",
     texto: "Qual a sua idade?",
   },
   {
     videoId: "Q3i2v42xSYc",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c2",
     texto: "Qual o seu endereço?",
   },
   {
     videoId: "pQazFcEFKMU",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c2",
     texto: "Qual o seu CPF?",
   },
   {
     videoId: "kTLF0ZeIS-E",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c2",
     texto: "Qual o seu telefone para contato?",
   },
@@ -269,37 +269,37 @@ const listaDeVideos = [
   // Farmacêutico C3
   {
     videoId: "h3ZDrDHNxHU",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c3",
     texto: "Para tratar diabetes.",
   },
   {
     videoId: "xeDzNoYr2ww",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c3",
     texto: "Para tratar pressão alta.",
   },
   {
     videoId: "kl36P5tASro",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c3",
     texto: "Para tratar inflamações.",
   },
   {
     videoId: "BMkSZsJWIfo",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c3",
     texto: "Para tratar dor ou febre.",
   },
   {
     videoId: "z8TNlTbDIeE",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c3",
     texto: "Para tratar enxaqueca",
   },
   {
     videoId: "gnD1PJUGuBs",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c3",
     texto: "Para tratar enjoo.",
   },
@@ -307,38 +307,38 @@ const listaDeVideos = [
   // Farmacêutico C4
   {
     videoId: "1mXd7sVxQ",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c4",
     texto: "Esse medicamento deve ser engolido inteiro, com um copo de água.",
   },
   {
     videoId: "4a8iPXtjuvA",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c4",
     texto: "Temos o partidor; vou te mostrar",
   },
   {
     videoId: "k6DN13vrE",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c4",
     texto: "Esse medicamento é para ser mastigado. Não deve engolir inteiro",
   },
   {
     videoId: "u7fX6u3DRa8",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c4",
     texto:
       "Esse medicamento deve ser tomado três vezes ao dia, de 8 em 8 horas...",
   },
   {
     videoId: "c3_pe42JD0U",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c4",
     texto: "Esse medicamento deve ser usado apenas se tiver dor ou febre...",
   },
   {
     videoId: "R9807x6BPN4",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c4",
     texto: "Esse medicamento é para ser usado apenas por um dia.",
   },
@@ -346,40 +346,40 @@ const listaDeVideos = [
   // Farmacêutico C5
   {
     videoId: "ai2FTa5HMaw",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c5",
     texto:
       "Esse medicamento não pode ser utilizado por criança com menos de 2 anos.",
   },
   {
     videoId: "eYnhDtPTcTA",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c5",
     texto:
       "Esse medicamento não pode ser usado por mulher que está amamentando.",
   },
   {
     videoId: "XzwtETlFgqE",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c5",
     texto: "Esses medicamentos não podem ser tomados juntos.",
   },
   {
     videoId: "wzw-p9s_HbQ",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c5",
     texto:
       "Esse medicamento não pode ser utilizado em caso de suspeita de dengue.",
   },
   {
     videoId: "_PeE60PcpTA",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c5",
     texto: "Guarde esse medicamento na geladeira depois de aberto.",
   },
   {
     videoId: "hyIPE5z7-kw",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c5",
     texto: "Armazene em lugar fresco e seco.",
   },
@@ -387,39 +387,39 @@ const listaDeVideos = [
   // Farmacêutico C6
   {
     videoId: "7z8pQhKBJkE",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c6",
     texto:
       "Se o medicamento não estiver fazendo efeito, consulte o seu médico.",
   },
   {
     videoId: "Xb8nHL1rdfk",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c6",
     texto: "Mantenha sua carteira de vacinação em dia.",
   },
   {
     videoId: "5sPDd5vM_q8",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c6",
     texto: "Faça repouso e beba bastante água",
   },
   {
     videoId: "xBMa-HrWJo0",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c6",
     texto:
       "Retorne ao seu médico para que ele possa ajustar a dose do seu medicamento.",
   },
   {
     videoId: "AEfaUq7Jmdw",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c6",
     texto: "Se surgir qualquer dúvida sobre medicamentos, pode me procurar...",
   },
   {
     videoId: "xzTnjgV1IRs",
-    userType: "farmaceutico",
+    userType: "Farmaceutico",
     categoria: "c6",
     texto: "Aguardo o seu retorno; Obrigado pela atenção!",
   },
