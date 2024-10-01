@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,10 +27,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('IS_PRODUCTION', True)
 
-ALLOWED_HOSTS = []
-
+APP_HOSTS = os.getenv('APP_HOSTS', '127.0.0.1,localhost')
+ALLOWED_HOSTS = APP_HOSTS.split(',')
 
 # Application definition
 
@@ -56,10 +58,8 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-]
+CORS_ALLOWED_HOSTS = os.getenv('CORS_ALLOWED_HOSTS', 'http://localhost:5173,http://127.0.0.1:5173')
+CORS_ALLOWED_ORIGINS = CORS_ALLOWED_HOSTS.split(',')
 
 ROOT_URLCONF = 'frmlb.urls'
 
