@@ -11,3 +11,6 @@ class Videos(models.Model):
     category = models.TextField(max_length=3)
     description = models.CharField(max_length=255)
     created_on = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f"{self.user_type} - {self.description} - {self.category}"
