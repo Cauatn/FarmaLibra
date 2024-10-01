@@ -7,6 +7,18 @@ import farmaceutico from "@/assets/imagem_farmaceutico_tr.png";
 import { Item, useListVideos } from "@/db/buffer";
 
 function Chat() {
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/videos/")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setVideos(data);
+      })
+      .catch((error) => console.error("Error fetching videos:", error));
+  }, []);
+
   return (
     <div className="m-0 flex min-h-screen w-full flex-col bg-[#F4F4F4]">
       <div className="mx-auto flex h-full w-full max-w-7xl flex-col space-y-4">

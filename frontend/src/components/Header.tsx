@@ -17,7 +17,7 @@ function Header({ showBack }: { showBack?: boolean }) {
             <span>VOLTAR</span>
           </Button>
         )}
-        <div className="ml-80 flex w-full items-center justify-start space-x-20">
+        <div className="ml-40 flex w-full items-center justify-start space-x-20">
           <Button
             className="flex items-center space-x-1 text-sm"
             onClick={() => navigate("/inicio")}
