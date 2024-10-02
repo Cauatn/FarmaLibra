@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Header from "@/components/Header";
 import CustomDialog from "@/components/CustomDialog";
 
@@ -8,56 +8,85 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { useActionStore, useListVideos } from "@/db/buffer";
 import listaDeVideos from "@/db/videos";
 import { useNavigate } from "react-router-dom";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { BotaoAtendimento } from "@/components/BotaoAtendimento";
+import { categories } from "@/lib/categories";
+
+interface CategoryData {
+  titulo: string;
+  cor: string;
+}
+
+const getCategoryData = (category: string): CategoryData => {
+  const categoryMap: { [key: string]: CategoryData } = {
+    c1: { titulo: "SAUDAÇÕES / ACOLHIMENTO", cor: "bg-[#95CC92]" },
+    c2: { titulo: "PRESCRIÇÕES E DOCUMENTOS", cor: "bg-[#92AEE4]" },
+    c3: { titulo: "PARA QUE SERVE ESSE MEDICAMENTO?", cor: "bg-[#F6B1EB]" },
+    c4: { titulo: "COMO USAR O MEDICAMENTO", cor: "bg-[#FFAD54]" },
+    c5: { titulo: "ALERTAS", cor: "bg-[#F26661]" },
+    c6: { titulo: "OUTRA CATEGORIA", cor: "bg-[#C1C1C1]" },
+  };
+
+  return (
+    categoryMap[category] || { titulo: "Título padrão", cor: "bg-gray-500" }
+  );
+};
 
 function Category() {
   const { action, category } = useActionStore();
 
-  // Memorizar o título e a cor com base na categoria
-  const { titulo, cor } = useMemo(() => {
-    let titulo;
-    let cor;
-    switch (category) {
-      case "c1":
-        titulo = "SAUDAÇÕES / ACOLHIMENTO";
-        cor = "bg-[#95CC92]";
-        break;
-      case "c2":
-        titulo = "PRESCRIÇÕES E DOCUMENTOS";
-        cor = "bg-[#92AEE4]";
-        break;
-      case "c3":
-        titulo = "PARA QUE SERVE ESSE MEDICAMENTO?";
-        cor = "bg-[#F6B1EB]";
-        break;
-      case "c4":
-        titulo = "COMO USAR O MEDICAMENTO";
-        cor = "bg-[#FFAD54]";
-        break;
-      case "c5":
-        titulo = "ALERTAS";
-        cor = "bg-[#F26661]";
-        break;
-      case "c6":
-        titulo = "OUTRA CATEGORIA";
-        cor = "bg-[#C1C1C1]";
-        break;
-      default:
-        titulo = "Título padrão";
-        cor = "bg-gray-500";
-    }
-    return { titulo, cor };
-  }, [category]);
+  const { titulo, cor } = useMemo(() => getCategoryData(category), [category]);
+
+  const [hoveredVideo, setHoveredVideo] = useState("");
+
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="flex min-h-screen flex-col bg-[#F4F4F4]">
       <div className="mx-auto w-full max-w-7xl flex-grow space-y-4">
         <Header showBack />
         <main className="relative flex flex-grow flex-col items-center space-y-8">
-          <div
-            className={`z-20 flex h-20 w-[766px] items-center justify-center rounded-2xl ${cor} text-xl font-bold`}
-          >
-            {titulo}
-          </div>
+          <Dialog open={isOpen}>
+            <DialogTrigger
+              className={`z-20 flex h-20 w-[766px] items-center justify-center rounded-2xl ${cor} text-xl font-bold`}
+              onClick={() => {
+                setIsOpen(true);
+              }}
+            >
+              {titulo}
+            </DialogTrigger>
+            <DialogContent className="flex max-w-fit space-x-4">
+              <div className="mx-auto max-w-md space-y-4 p-4">
+                {categories.map((category) => (
+                  <BotaoAtendimento
+                    key={category.videoId}
+                    texto={category.texto}
+                    category={category.category}
+                    videoId={category.videoId}
+                    onHover={setHoveredVideo}
+                    onClick={setIsOpen}
+                  />
+                ))}
+                <div className="rounded-md bg-gray-800 p-4 text-white">
+                  <p className="text-sm">
+                    AVISO: Não divulgar ou passar a terceiros qualquer
+                    informação contida neste sistema.
+                  </p>
+                </div>
+              </div>
+              <div className="h-[400px] w-[1px] bg-gray-400"></div>
+              <div>
+                <iframe
+                  width="560"
+                  height="315"
+                  src={`https://www.youtube.com/embed/${hoveredVideo}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </DialogContent>
+          </Dialog>
           <div
             className={`inline-flex w-full ${action == "Cliente" ? `justify-start` : `justify-end`}`}
           >
