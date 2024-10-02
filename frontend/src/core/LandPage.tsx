@@ -3,8 +3,11 @@ import Univasf from "@/assets/univasf.png";
 import cim from "@/assets/cim.png";
 import elipse from "@/assets/elipse_tela_de_inicio.png";
 import cff from "@/assets/conselho-federal-de-farmacia.png";
+import { useNavigate } from "react-router-dom";
 
 function LandPage() {
+  const navigate = useNavigate();
+
   return (
     <div className="relative mx-auto max-w-7xl pt-20">
       <img
@@ -31,7 +34,10 @@ function LandPage() {
             <Button className="max-h-[75px] w-full max-w-[340px] bg-[#FFCD00] p-8 text-xl font-semibold text-black">
               Mais informações
             </Button>
-            <Button className="max-h-[75px] w-full max-w-[340px] bg-[#FFCD00] p-8 text-xl font-semibold text-black">
+            <Button
+              className="max-h-[75px] w-full max-w-[340px] bg-[#FFCD00] p-8 text-xl font-semibold text-black"
+              onClick={() => navigate("/inicio")}
+            >
               Iniciar
             </Button>
           </div>

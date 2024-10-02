@@ -40,7 +40,7 @@ function Inicio() {
               <MessageCircle />
               <span>ATENDIMENTO</span>
             </button>
-            <button
+            {/* <button
               className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3"
               onClick={() => {
                 navigate("/");
@@ -48,7 +48,7 @@ function Inicio() {
             >
               <Clock />
               <span>HISTÓRICO</span>
-            </button>
+            </button> */}
             <button
               className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3"
               onClick={() => {
