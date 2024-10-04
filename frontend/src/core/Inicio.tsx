@@ -1,5 +1,6 @@
 import elipse from "@/assets/elipse_tela_de_inicio.png";
 import {
+  Book,
   Clock,
   GraduationCap,
   HelpCircle,
@@ -13,7 +14,7 @@ function Inicio() {
   const navigate = useNavigate();
 
   return (
-    <div className="relative flex h-screen flex-col bg-white">
+    <div className="relative flex min-h-screen flex-col bg-[#F4F4F4]">
       <img
         src={elipse}
         alt="Elipse"
@@ -40,15 +41,15 @@ function Inicio() {
               <MessageCircle />
               <span>ATENDIMENTO</span>
             </button>
-            {/* <button
+            <button
               className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3"
               onClick={() => {
                 navigate("/");
               }}
             >
-              <Clock />
-              <span>HISTÓRICO</span>
-            </button> */}
+              <Book />
+              <span>Vocabulário farmacêutico bilíngue</span>
+            </button>
             <button
               className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3"
               onClick={() => {
@@ -61,20 +62,20 @@ function Inicio() {
             <button
               className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3"
               onClick={() => {
-                navigate("/");
-              }}
-            >
-              <HelpCircle />
-              <span>Ajuda</span>
-            </button>
-            <button
-              className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3"
-              onClick={() => {
                 navigate("/sugestion");
               }}
             >
               <MessageSquare />
               <span>SUGESTÕES</span>
+            </button>
+            <button
+              className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              <HelpCircle />
+              <span>Ajuda</span>
             </button>
           </nav>
         </div>
