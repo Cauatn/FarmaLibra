@@ -5,6 +5,8 @@ import CustomDialog from "@/components/CustomDialog";
 import cliente from "@/assets/imagem_cliente.png";
 import farmaceutico from "@/assets/imagem_farmaceutico_tr.png";
 import { Item, useListVideos } from "@/db/buffer";
+import { Button } from "@/components/ui/button";
+import { X } from "lucide-react";
 
 function Chat() {
   const [videos, setVideos] = useState([]);
@@ -61,6 +63,8 @@ function ChatArea() {
   );
 }
 
+//TODO: ABSTRAIR A MENSAGEM DE FARMACEUTICO E CLIENTE
+
 interface Message {
   action: string;
   message: string;
@@ -68,8 +72,10 @@ interface Message {
 }
 
 function ClientMessage({ message }: { message: Message }) {
+  const removeItem = useListVideos((state) => state.removeItem);
+
   return (
-    <div className="relative mb-4 flex items-center justify-start">
+    <div className="relative mb-4 flex items-start justify-start">
       <img src={cliente} alt="" className="absolute -left-8 top-3 w-10" />
       <div className="rounded-lg bg-white p-2">
         {message.videoId ? (
@@ -85,13 +91,24 @@ function ClientMessage({ message }: { message: Message }) {
           message.message
         )}
       </div>
+      <Button
+        variant="secondary"
+        size="icon"
+        className="ml-2 rounded-full bg-white"
+        onClick={() => removeItem(message.videoId)}
+      >
+        <X className="size-5" />
+        <span className="sr-only">Remover vídeo</span>
+      </Button>
     </div>
   );
 }
 
 function PharmacistMessage({ message }: { message: Message }) {
+  const removeItem = useListVideos((state) => state.removeItem);
+
   return (
-    <div className="relative mb-4 flex items-center justify-end">
+    <div className="relative mb-4 flex items-start justify-end">
       <div className="rounded-lg bg-[#FFCD00] p-2">
         {message.videoId ? (
           <iframe
@@ -111,6 +128,15 @@ function PharmacistMessage({ message }: { message: Message }) {
         alt=""
         className="absolute -right-8 top-48 w-10"
       />
+      <Button
+        variant="secondary"
+        size="icon"
+        className="ml-2 rounded-full bg-white"
+        onClick={() => removeItem(message.videoId)}
+      >
+        <X className="size-5" />
+        <span className="sr-only">Remover vídeo</span>
+      </Button>
     </div>
   );
 }

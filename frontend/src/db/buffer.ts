@@ -23,9 +23,14 @@ export interface Item {
 interface StringArrayState {
   items: Item[];
   addItem: (item: Item) => void;
+  removeItem: (videoId: string) => void;
 }
 
 export const useListVideos = create<StringArrayState>((set) => ({
   items: [],
   addItem: (item) => set((state) => ({ items: [...state.items, item] })),
+  removeItem: (videoId: string) =>
+    set((state) => ({
+      items: state.items.filter((item) => item.videoId !== videoId),
+    })),
 }));
