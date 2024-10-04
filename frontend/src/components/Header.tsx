@@ -3,7 +3,7 @@ import { ArrowLeftIcon, CircleIcon, HomeIcon, Share2Icon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 
-function Header({ showBack }: { showBack?: boolean }) {
+function Header({ showBack, route }: { showBack?: boolean; route?: string }) {
   const navigate = useNavigate();
   return (
     <header className="relative z-10 bg-black p-2 text-white">
@@ -11,7 +11,10 @@ function Header({ showBack }: { showBack?: boolean }) {
         {showBack && (
           <Button
             className="flex items-center space-x-1 text-sm"
-            onClick={() => navigate(-1)}
+            onClick={() => {
+              if (route) navigate(route);
+              else navigate(-1);
+            }}
           >
             <ArrowLeftIcon className="h-4 w-4" />
             <span>VOLTAR</span>
