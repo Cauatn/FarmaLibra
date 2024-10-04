@@ -7,10 +7,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { useActionStore, useListVideos } from "@/db/buffer";
 import listaDeVideos from "@/db/videos";
-import { useNavigate } from "react-router-dom";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { BotaoAtendimento } from "@/components/BotaoAtendimento";
-import { categories } from "@/lib/categories";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import DialogCustomContent from "@/components/DialogCustomContent";
 
 interface CategoryData {
   titulo: string;
@@ -37,54 +42,25 @@ function Category() {
 
   const { titulo, cor } = useMemo(() => getCategoryData(category), [category]);
 
-  const [hoveredVideo, setHoveredVideo] = useState("");
-
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="flex min-h-screen flex-col bg-[#F4F4F4]">
       <div className="mx-auto w-full max-w-7xl flex-grow space-y-4">
-        <Header showBack />
+        <Header showBack route="/chat" />
         <main className="relative flex flex-grow flex-col items-center space-y-8">
-          <Dialog open={isOpen}>
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTitle className="hidden"></DialogTitle>
             <DialogTrigger
               className={`z-20 flex h-20 w-[766px] items-center justify-center rounded-2xl ${cor} text-xl font-bold`}
-              onClick={() => {
-                setIsOpen(true);
-              }}
             >
               {titulo}
             </DialogTrigger>
-            <DialogContent className="flex max-w-fit space-x-4">
-              <div className="mx-auto max-w-md space-y-4 p-4">
-                {categories.map((category) => (
-                  <BotaoAtendimento
-                    key={category.videoId}
-                    texto={category.texto}
-                    category={category.category}
-                    videoId={category.videoId}
-                    onHover={setHoveredVideo}
-                    onClick={setIsOpen}
-                  />
-                ))}
-                <div className="rounded-md bg-gray-800 p-4 text-white">
-                  <p className="text-sm">
-                    AVISO: Não divulgar ou passar a terceiros qualquer
-                    informação contida neste sistema.
-                  </p>
-                </div>
-              </div>
-              <div className="h-[400px] w-[1px] bg-gray-400"></div>
-              <div>
-                <iframe
-                  width="560"
-                  height="315"
-                  src={`https://www.youtube.com/embed/${hoveredVideo}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0`}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
+            <DialogContent
+              className="flex max-w-fit space-x-4 p-14"
+              aria-describedby="dialog-description"
+            >
+              <DialogCustomContent setClose={() => setOpen(false)} />
             </DialogContent>
           </Dialog>
           <div

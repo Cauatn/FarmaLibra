@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { useActionStore } from "@/db/buffer";
@@ -7,7 +7,7 @@ interface AtendimentoProps {
   texto: string;
   videoId: string;
   category: string;
-  onClick: (value: boolean) => void;
+  setClose: (value: boolean) => void;
   onHover: (videoId: string) => void;
 }
 
@@ -16,13 +16,14 @@ export function BotaoAtendimento({
   videoId,
   category,
   onHover,
-  onClick,
+  setClose,
 }: AtendimentoProps) {
   const navigate = useNavigate();
   const { setCategory } = useActionStore();
 
   return (
     <Button
+      type="submit"
       className={`w-full justify-start ${
         category === "c1"
           ? "bg-[#95CC92]"
@@ -40,9 +41,9 @@ export function BotaoAtendimento({
       } text-black`}
       variant="ghost"
       onClick={() => {
-        onClick(false);
         setCategory(category);
-        navigate("/category");
+        navigate(`/category/${category}`);
+        setClose(false);
       }}
       onMouseEnter={() => onHover(videoId)}
     >

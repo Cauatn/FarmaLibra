@@ -12,7 +12,7 @@ const AppRoutes = () => {
       <Route path="/" element={<LandPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/chat" element={<Chat />} />
-      <Route path="/category" element={<Category />} />
+      <Route path="/category/:category" element={<Category />} />
       <Route path="/inicio" element={<Inicio />} />
       <Route path="/sugestion" element={<Sugestion />} />
     </Switch>
