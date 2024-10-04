@@ -65,7 +65,7 @@ function Inicio() {
               }}
             >
               <HelpCircle />
-              <span>TUTORIAL</span>
+              <span>Ajuda</span>
             </button>
             <button
               className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3"
