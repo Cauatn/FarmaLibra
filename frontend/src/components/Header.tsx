@@ -1,4 +1,4 @@
-import { Plane } from "lucide-react";
+import { HelpCircle, Plane } from "lucide-react";
 import { ArrowLeftIcon, CircleIcon, HomeIcon, Share2Icon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
@@ -39,15 +39,22 @@ function Header({ showBack, route }: { showBack?: boolean; route?: string }) {
             className="flex items-center space-x-1 text-sm"
             onClick={() => navigate("")}
           >
+            <Share2Icon className="h-4 w-4" />
+            <span>ÁREA DE APRENDIZADO</span>
+          </Button>
+          <Button
+            className="flex items-center space-x-1 text-sm"
+            onClick={() => navigate("/sugestion")}
+          >
             <Plane className="h-4 w-4" />
-            <span>NOTÍCIAS</span>
+            <span>SUGESTÕES</span>
           </Button>
           <Button
             className="flex items-center space-x-1 text-sm"
             onClick={() => navigate("")}
           >
-            <Share2Icon className="h-4 w-4" />
-            <span>ÁREA DE APRENDIZADO</span>
+            <HelpCircle className="h-4 w-4" />
+            <span>AJUDA</span>
           </Button>
         </div>
       </nav>
