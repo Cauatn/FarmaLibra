@@ -46,8 +46,8 @@ function Category() {
 
   return (
     <div className="flex min-h-screen flex-col bg-[#F4F4F4]">
+      <Header showBack route="/chat" />
       <div className="mx-auto w-full max-w-7xl flex-grow space-y-4">
-        <Header showBack route="/chat" />
         <main className="relative flex flex-grow flex-col items-center space-y-8">
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTitle className="hidden"></DialogTitle>

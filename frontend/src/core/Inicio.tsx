@@ -9,16 +9,18 @@ import {
 } from "lucide-react";
 import cliente from "@/assets/imagem_cliente.png";
 import { useNavigate } from "react-router-dom";
+import Header from "@/components/Header";
 
 function Inicio() {
   const navigate = useNavigate();
 
   return (
     <div className="relative flex min-h-screen flex-col">
+      <Header showBack />
       <img
         src={elipse}
         alt="Elipse"
-        className="absolute -top-10 left-0 z-10 h-auto w-full"
+        className="absolute -top-10 left-0 h-auto w-full"
       />
       <div className="flex flex-1 items-center">
         <div className="relative flex w-2/3 flex-col space-y-20 p-8">
