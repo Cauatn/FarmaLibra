@@ -14,7 +14,7 @@ function Inicio() {
   const navigate = useNavigate();
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-[#F4F4F4]">
+    <div className="relative flex min-h-screen flex-col">
       <img
         src={elipse}
         alt="Elipse"

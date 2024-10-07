@@ -1,13 +1,12 @@
 import FeedbackForm from "@/components/FeedBackForm";
-import elipse from "@/assets/elipse_tela_de_inicio.png";
 import cliente from "@/assets/imagem_cliente.png";
 import Header from "@/components/Header";
 
 function Sugestion() {
   return (
     <div className="flex min-h-screen flex-col bg-[#F4F4F4]">
-      <div className="relative mx-auto w-full max-w-7xl flex-grow space-y-14">
-        <Header showBack />
+      <Header showBack />
+      <div className="relative mx-auto mt-16 w-full max-w-7xl flex-grow space-y-14">
         <div className="flex items-center">
           <div className="relative flex w-2/3 flex-col space-y-8 px-8">
             <div className="relative inline-flex h-14 w-[380px] items-center justify-between bg-white">
