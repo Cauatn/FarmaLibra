@@ -32,6 +32,13 @@ DEBUG = os.getenv('IS_PRODUCTION', True)
 APP_HOSTS = os.getenv('APP_HOSTS', '127.0.0.1,localhost')
 ALLOWED_HOSTS = APP_HOSTS.split(',')
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'caua.tavares@discente.univasf.edu.br'
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+
 # Application definition
 
 INSTALLED_APPS = [
