@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
+import Sugestion from "@/core/Sugestion";
 
 export default function FeedbackForm() {
   const [name, setName] = useState("");
@@ -24,24 +25,52 @@ export default function FeedbackForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simular envio do formulário
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const payload = {
+      name,
+      email,
+      suggestion,
+      video: video ? video : null,
+    };
 
-    // Aqui você normalmente enviaria os dados para seu backend
-    console.log({ name, email, suggestion, video });
+    try {
+      const response = await fetch("http://127.0.0.1:8000/enviar-email/", {
+        method: "POST",
+        body: JSON.stringify(payload),
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
 
-    toast({
-      title: "Sugestão enviada!",
-      description:
-        "Obrigado por seu feedback. Sua sugestão foi recebida com sucesso.",
-    });
+      if (response.ok) {
+        toast({
+          title: "Sugestão enviada!",
+          description:
+            "Obrigado por seu feedback. Sua sugestão foi recebida com sucesso.",
+        });
 
-    // Resetar o formulário
-    setName("");
-    setEmail("");
-    setSuggestion("");
-    setVideo(null);
-    setIsSubmitting(false);
+        // Resetar o formulário
+        setName("");
+        setEmail("");
+        setSuggestion("");
+        setVideo(null);
+      } else {
+        toast({
+          title: "Erro ao enviar sugestão",
+          description:
+            "Ocorreu um erro ao enviar sua sugestão. Tente novamente mais tarde.",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Erro ao enviar sugestão",
+        description:
+          "Ocorreu um erro ao enviar sua sugestão. Tente novamente mais tarde.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

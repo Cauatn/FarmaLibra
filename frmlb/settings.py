@@ -140,3 +140,31 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND= 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST= 'sandbox.smtp.mailtrap.io'
+EMAIL_PORT= 25
+EMAIL_HOST_USER= 'b3a6966e01e94c'
+EMAIL_HOST_PASSWORD= 'a9ccd8ddba89ea'
+EMAIL_USE_TLS= True
+EMAIL_USE_SSL= False
+
+# -------- CROSS DOMAIN SESSION AUTHENTICATION
+# CSRF_COOKIE_HTTPONLY = True
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    'http://localhost:62694',
+]
+
+# PROD SETTINGS
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    'http://localhost:62694',
+]
+CORS_EXPOSE_HEADERS = ['Content-Type']
+CORS_ALLOW_CREDENTIALS = True
