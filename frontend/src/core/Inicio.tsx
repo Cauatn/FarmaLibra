@@ -10,13 +10,23 @@ import {
 import cliente from "@/assets/imagem_cliente.png";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
+import { useState } from "react";
 
 function Inicio() {
   const navigate = useNavigate();
+  const [hoverVideoId, setHoverVideoId] = useState("");
+
+  const handleMouseEnter = (videoId: string) => {
+    setHoverVideoId(videoId);
+  };
+
+  const handleMouseLeave = () => {
+    setHoverVideoId("");
+  };
 
   return (
     <div className="relative flex min-h-screen flex-col">
-      <Header showBack />
+      <Header showBack route="/" />
       <img
         src={elipse}
         alt="Elipse"
@@ -35,7 +45,9 @@ function Inicio() {
           </div>
           <nav className="space-y-4">
             <button
-              className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3"
+              className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3 hover:bg-gray-200"
+              onMouseEnter={() => handleMouseEnter("dQw4w9WgXcQ")}
+              onMouseLeave={() => handleMouseLeave()}
               onClick={() => {
                 navigate("/chat");
               }}
@@ -44,7 +56,9 @@ function Inicio() {
               <span>ATENDIMENTO</span>
             </button>
             <button
-              className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3"
+              className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3 hover:bg-gray-200"
+              onMouseEnter={() => handleMouseEnter("dQw4w9WgXcQ")}
+              onMouseLeave={() => handleMouseLeave()}
               onClick={() => {
                 navigate("/");
               }}
@@ -53,7 +67,9 @@ function Inicio() {
               <span>Vocabulário farmacêutico bilíngue</span>
             </button>
             <button
-              className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3"
+              className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3 hover:bg-gray-200"
+              onMouseEnter={() => handleMouseEnter("dQw4w9WgXcQ")}
+              onMouseLeave={() => handleMouseLeave()}
               onClick={() => {
                 navigate("/");
               }}
@@ -62,7 +78,9 @@ function Inicio() {
               <span>ÁREA DE APRENDIZADO</span>
             </button>
             <button
-              className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3"
+              className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3 hover:bg-gray-200"
+              onMouseEnter={() => handleMouseEnter("dQw4w9WgXcQ")}
+              onMouseLeave={() => handleMouseLeave()}
               onClick={() => {
                 navigate("/sugestion");
               }}
@@ -71,7 +89,9 @@ function Inicio() {
               <span>SUGESTÕES</span>
             </button>
             <button
-              className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3"
+              className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3 hover:bg-gray-200"
+              onMouseEnter={() => handleMouseEnter("dQw4w9WgXcQ")}
+              onMouseLeave={() => handleMouseLeave()}
               onClick={() => {
                 navigate("/");
               }}
@@ -84,11 +104,13 @@ function Inicio() {
 
         <div className="w-1/3 bg-gray-100 p-8">
           <div className="mb-8 rounded-lg bg-white p-4">
-            <h3 className="mb-2 font-semibold">
-              VIDEO que muda ao passar o mouse em um texto, fazendo a tradução
-              em libras
-            </h3>
-            <div className="h-40 rounded-lg bg-gray-300"></div>
+            <iframe
+              src={`https://www.youtube.com/embed/${hoverVideoId}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="h-60 w-full"
+            ></iframe>
           </div>
           <div>
             <h3 className="mb-4 font-semibold">Notícias</h3>
