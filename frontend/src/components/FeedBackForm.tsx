@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,6 +13,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 import Sugestion from "@/core/Sugestion";
+import emailjs from "@emailjs/browser";
+import { ToastAction } from "./ui/toast";
 
 export default function FeedbackForm() {
   const [name, setName] = useState("");
@@ -21,56 +23,43 @@ export default function FeedbackForm() {
   const [video, setVideo] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  emailjs.init("uzzAdU4QhL0OaAq9L");
+
+  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-    const payload = {
-      name,
-      email,
-      suggestion,
-      video: video ? video : null,
-    };
+    emailjs
+      .send("service_zpkdh6l", "template_qvll3fh", {
+        name: name,
+        message: suggestion,
+        email: email,
+      })
+      .then(
+        () => {
+          toast({
+            variant: "default",
+            title: "Enviado com sucesso !",
+            description: "sugestão enviada com sucesso",
+          });
 
-    try {
-      const response = await fetch("http://127.0.0.1:8000/enviar-email/", {
-        method: "POST",
-        body: JSON.stringify(payload),
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          setIsSubmitting(false);
+          setName("");
+          setEmail("");
+          setSuggestion("");
+          setVideo(null);
         },
-      });
-
-      if (response.ok) {
-        toast({
-          title: "Sugestão enviada!",
-          description:
-            "Obrigado por seu feedback. Sua sugestão foi recebida com sucesso.",
-        });
-
-        // Resetar o formulário
-        setName("");
-        setEmail("");
-        setSuggestion("");
-        setVideo(null);
-      } else {
-        toast({
-          title: "Erro ao enviar sugestão",
-          description:
-            "Ocorreu um erro ao enviar sua sugestão. Tente novamente mais tarde.",
-        });
-      }
-    } catch (error) {
-      toast({
-        title: "Erro ao enviar sugestão",
-        description:
-          "Ocorreu um erro ao enviar sua sugestão. Tente novamente mais tarde.",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+        (error) => {
+          toast({
+            variant: "destructive",
+            title: "Ops! Algo deu errado",
+            description: `Ocorreu algum erro durante o envio.\n${error}`,
+            action: (
+              <ToastAction altText="Try again">Tente novamente</ToastAction>
+            ),
+          });
+          setIsSubmitting(false);
+        },
+      );
   };
 
   return (
@@ -82,7 +71,7 @@ export default function FeedbackForm() {
           uso do nosso aplicativo.
         </CardDescription>
       </CardHeader>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={sendEmail}>
         <CardContent className="space-y-4">
           <div className="space-y-2 text-start">
             <Label htmlFor="name">Nome</Label>
