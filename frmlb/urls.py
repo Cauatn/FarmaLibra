@@ -16,11 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import redirect_to_admin,enviar_email
+from .views import redirect_to_admin
 
 urlpatterns = [
     path('', redirect_to_admin),
     path('admin/', admin.site.urls),
     path('videos/', include('frmlbsite.urls')),
-    path('enviar-email/', enviar_email, name='enviar_email'),
+    
 ]

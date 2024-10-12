@@ -141,14 +141,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND= 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST= 'sandbox.smtp.mailtrap.io'
-EMAIL_PORT= 25
-EMAIL_HOST_USER= 'b3a6966e01e94c'
-EMAIL_HOST_PASSWORD= 'a9ccd8ddba89ea'
-EMAIL_USE_TLS= True
-EMAIL_USE_SSL= False
-
 # -------- CROSS DOMAIN SESSION AUTHENTICATION
 # CSRF_COOKIE_HTTPONLY = True
 CSRF_TRUSTED_ORIGINS = [
