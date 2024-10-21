@@ -9,7 +9,6 @@ import farmaceutico from "@/assets/imagem_farmaceutico_tr.png";
 import { useState } from "react";
 import { useActionStore } from "@/db/buffer";
 
-import { categories } from "@/lib/categories";
 import DialogCustomContent from "./DialogCustomContent";
 
 function CustomDialog({ type }: { type: string }) {

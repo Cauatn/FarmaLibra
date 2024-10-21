@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 
 function Chat() {
-  const [videos, setVideos] = useState([]);
+  const [, setVideos] = useState([]);
 
   useEffect(() => {
     fetch("http://127.0.0.1:8000/videos/")

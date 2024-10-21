@@ -1,4 +1,4 @@
-import { HelpCircle, Plane } from "lucide-react";
+import { HelpCircle } from "lucide-react";
 import { ArrowLeftIcon, CircleIcon, HomeIcon, Share2Icon } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";

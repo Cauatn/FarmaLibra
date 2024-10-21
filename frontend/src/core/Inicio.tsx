@@ -1,7 +1,6 @@
 import elipse from "@/assets/elipse_tela_de_inicio.png";
 import {
   Book,
-  Clock,
   GraduationCap,
   HelpCircle,
   MessageCircle,

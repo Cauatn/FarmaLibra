@@ -1,5 +1,5 @@
 import Category from "@/core/Category";
-import Chat from "@/core/Chat";
+import Chat from "@/core/chat";
 import Inicio from "@/core/Inicio";
 import LandPage from "@/core/LandPage";
 import Login from "@/core/Login";

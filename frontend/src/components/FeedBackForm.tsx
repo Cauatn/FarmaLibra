@@ -12,7 +12,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
-import Sugestion from "@/core/Sugestion";
 import emailjs from "@emailjs/browser";
 import { ToastAction } from "./ui/toast";
 
@@ -20,7 +19,7 @@ export default function FeedbackForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [suggestion, setSuggestion] = useState("");
-  const [video, setVideo] = useState<File | null>(null);
+  const [, setVideo] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   emailjs.init("uzzAdU4QhL0OaAq9L");

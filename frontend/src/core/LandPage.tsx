@@ -1,18 +1,11 @@
 import { Button } from "@/components/ui/button";
-import {
-  Book,
-  FileText,
-  Globe,
-  GraduationCap,
-  Instagram,
-  Layers,
-  ShieldCloseIcon,
-} from "lucide-react";
+import { Book, Globe, Instagram, Layers, ShieldCloseIcon } from "lucide-react";
 import { useState } from "react";
 import StaticLogoCloud from "@/components/Logos";
 import { useNavigate } from "react-router-dom";
 import Logo from "@/assets/farmalibras.png";
 import ImageSection from "@/components/SectionCard";
+import Confetti from "react-confetti";
 
 const navigation = {
   connect: [
@@ -88,6 +81,12 @@ function LandPage() {
 
 function Header() {
   const [isVisible, setIsVisible] = useState(true);
+  const [confettiVisible, setConfettiVisible] = useState(false);
+
+  const handleConfetti = () => {
+    setConfettiVisible(true);
+    setTimeout(() => setConfettiVisible(false), 4000);
+  };
 
   return (
     <>
@@ -99,11 +98,20 @@ function Header() {
       >
         <div className="flex w-full items-center gap-x-6 bg-yellow-400 px-6 py-3 sm:px-3.5 sm:before:flex-1">
           <div className="flex items-center text-sm font-medium leading-6 text-white">
-            <p>Lorem Ipsum is simply dummy text of the printing.</p>
+            <p>
+              O Farmalibras está em desenvolvimento. Algumas funções podem
+              mudar. Agradecemos sua paciência!{" "}
+            </p>
 
-            <a className="ml-3 flex-none rounded-lg bg-gray-900 px-4 py-2 text-xs text-white shadow-sm hover:bg-gray-900/80">
-              Lorem Ipsum
-            </a>
+            <button
+              className="ml-3 flex-none rounded-lg bg-gray-900 px-4 py-2 text-xs text-white shadow-sm hover:bg-gray-900/80"
+              onClick={handleConfetti}
+            >
+              Tudo bem !
+            </button>
+            {confettiVisible && (
+              <Confetti width={window.innerWidth} height={window.innerHeight} />
+            )}
           </div>
           <div className="flex flex-1 justify-end">
             <button
@@ -240,7 +248,13 @@ const AboutPage = () => {
   );
 };
 
-const FeatureCard = ({ icon, title, description }) => {
+interface FeatureCardProps {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+const FeatureCard = ({ icon, title, description }: FeatureCardProps) => {
   return (
     <div className="rounded-lg bg-gray-100 p-6">
       <div className="mb-4">{icon}</div>

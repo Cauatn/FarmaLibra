@@ -1,15 +1,6 @@
 import { motion } from "framer-motion";
-import {
-  BadgeDollarSign,
-  Book,
-  BookOpenText,
-  MessageCircle,
-  MessageCircleMore,
-  Rss,
-  Speaker,
-  Syringe,
-} from "lucide-react";
-import React, { useState } from "react";
+import { BookOpenText, MessageCircleMore, Syringe } from "lucide-react";
+import { useState } from "react";
 
 const ImageSection = () => {
   const [activeImage, setActiveImage] = useState(1);
