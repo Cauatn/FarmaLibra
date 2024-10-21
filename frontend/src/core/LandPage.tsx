@@ -33,8 +33,8 @@ function LandPage() {
       <main className="container mx-auto flex min-h-screen flex-grow flex-col justify-between">
         <Header />
         <div className="flex flex-grow items-center justify-between">
-          <div className="mt-14 flex flex-grow justify-between">
-            <div className="h-full w-[40%] pr-8">
+          <div className="mx-5 mt-14 flex flex-grow flex-col justify-between lg:mx-5 lg:flex-row">
+            <div className="mb-10 h-full pr-8 lg:w-[40%]">
               <h1 className="mb-4 text-start text-6xl font-semibold">
                 Bem Vindo ao Farmalibras
               </h1>
@@ -65,16 +65,16 @@ function LandPage() {
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
               allowFullScreen
-              className="w-[50%]"
+              className="w-full lg:w-[50%]"
             ></iframe>
           </div>
         </div>
         <StaticLogoCloud />
+        <section>
+          <AboutPage />
+        </section>
+        <Footer />
       </main>
-      <section>
-        <AboutPage />
-      </section>
-      <Footer />
     </div>
   );
 }
@@ -91,7 +91,6 @@ function Header() {
   return (
     <>
       <div
-        // replace `absolute` with `fixed` if you want the banner to be fixed on the page Also Animation will not work if you use `absolute`
         className={`absolute left-0 right-0 top-0 z-50 transition-all duration-300 ease-in-out ${
           isVisible ? "translate-y-0" : "-translate-y-full"
         }`}
@@ -128,20 +127,19 @@ function Header() {
     </>
   );
 }
-
 function Footer() {
   return (
     <footer
       aria-labelledby="footer-heading"
-      className="font-inter m-auto w-full max-w-7xl align-bottom"
+      className="font-inter w-full px-4 py-8"
     >
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto max-w-7xl px-2">
-        <div className="flex flex-col justify-between lg:flex-row">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex flex-col justify-between gap-8 lg:flex-row">
           <div className="flex flex-col justify-start space-y-8">
-            <div className="inline-flex items-center justify-start gap-4">
+            <div className="inline-flex items-center gap-4">
               <img
                 width={100}
                 height={40}
@@ -152,15 +150,15 @@ function Footer() {
               <span className="text-xl font-normal">Farmalibras</span>
             </div>
             <p className="text-md max-w-xs text-start leading-6 text-gray-700 dark:text-gray-300">
-              Not your average component library - build faster, launch sooner.
+              "A verdadeira inovação se encontra na acessibilidade, onde cada
+              conexão tem o poder de transformar vidas e promover a inclusão."
             </p>
             <div className="flex space-x-6 text-sm text-gray-700 dark:text-gray-300">
-              <div>Feito com ❤️ por INSERIR.</div>
+              <div>Feito com ❤️ por nossa equipe.</div>
             </div>
           </div>
-          {/* items */}
-          <div className="mt-16 grid grid-cols-2 gap-14 md:grid-cols-2 lg:mt-0 xl:col-span-2">
-            <div className="md:mt-0">
+          <div className="mt-8 grid grid-cols-1 gap-14 md:grid-cols-2 lg:mt-0">
+            <div>
               <h3 className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200">
                 Fale com a gente
               </h3>
@@ -180,28 +178,26 @@ function Footer() {
               </div>
             </div>
             <div>
-              <div>
-                <h3 className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200">
-                  Instituições
-                </h3>
-                <div className="mt-6 space-y-4">
-                  {navigation.company.map((item) => (
-                    <div key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-sm leading-6 text-gray-700 hover:text-gray-900 dark:text-gray-600 hover:dark:text-gray-200"
-                      >
-                        {item.name}
-                      </a>
-                    </div>
-                  ))}
-                </div>
+              <h3 className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200">
+                Instituições
+              </h3>
+              <div className="mt-6 space-y-4">
+                {navigation.company.map((item) => (
+                  <div key={item.name}>
+                    <a
+                      href={item.href}
+                      className="text-sm leading-6 text-gray-700 hover:text-gray-900 dark:text-gray-600 hover:dark:text-gray-200"
+                    >
+                      {item.name}
+                    </a>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
-        <div className="mt-8 border-t border-gray-900/10 pt-8 dark:border-gray-100/10 sm:mt-20 lg:mt-6 lg:pb-2">
-          <p className="text-xs leading-5 text-gray-700 dark:text-gray-300">
+        <div className="mt-8 border-t border-gray-300 pt-8">
+          <p className="text-xs leading-5 text-gray-700">
             &copy; 2024 Farmalibras. Todos os direitos reservados.
           </p>
         </div>
@@ -212,21 +208,19 @@ function Footer() {
 
 const AboutPage = () => {
   return (
-    <div className="mx-auto my-8 max-w-4xl bg-white">
+    <div className="mx-auto my-8 max-w-4xl px-4">
       <ImageSection />
-
       <div className="mb-8">
         <a
           href="https://www.instagram.com/farmalibras/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center rounded-lg bg-gray-100 px-4 py-2 text-black transition-colors hover:bg-gray-200"
+          className="inline-flex items-center rounded-lg bg-gray-100 px-4 py-2 text-black hover:bg-gray-200"
         >
           <Instagram className="mr-2 h-5 w-5" />
           FarmaLibras no Instagram
         </a>
       </div>
-
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         <FeatureCard
           icon={<Book className="h-8 w-8 text-yellow-500" />}
