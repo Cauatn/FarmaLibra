@@ -51,7 +51,7 @@ function Category() {
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTitle className="hidden"></DialogTitle>
             <DialogTrigger
-              className={`z-20 flex h-20 w-[766px] items-center justify-center rounded-2xl ${cor} text-xl font-bold`}
+              className={`z-0 flex h-20 w-[766px] items-center justify-center rounded-2xl ${cor} text-xl font-bold`}
             >
               {titulo}
             </DialogTrigger>
@@ -91,7 +91,7 @@ function ChatArea({ className, ...props }: CardProps) {
   );
 
   return (
-    <div className="inline-flex w-full flex-wrap space-x-2">
+    <div className="inline-flex w-full flex-wrap justify-center space-x-2">
       {filteredVideos.map((lista, index) => (
         <div key={index} className="w-fit p-4">
           <Card className={cn("w-[380px] p-4", className)} {...props}>

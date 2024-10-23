@@ -25,8 +25,8 @@ function Chat() {
     <div className="m-0 flex min-h-screen w-full flex-col bg-[#F4F4F4]">
       <Header showBack route="/inicio" />
       <div className="mx-auto mt-8 flex h-full w-full max-w-7xl flex-col space-y-4">
-        <main className="relative flex flex-col items-center space-y-8">
-          <div className="z-20 flex h-20 w-[766px] items-center justify-center rounded-2xl bg-white font-bold">
+        <main className="relative flex flex-col items-center space-y-16">
+          <div className="z-0 flex h-20 w-[75%] items-center justify-center rounded-2xl bg-white font-bold lg:w-[766px]">
             ATENDIMENTO
           </div>
           <div className="inline-flex w-full justify-between">
@@ -49,7 +49,7 @@ function ChatArea() {
   }, [items]);
 
   return (
-    <div className="w-full p-4">
+    <div className="w-full p-4 px-10 lg:mx-0">
       <div className="chat-messages">
         {messages.map((message, index) =>
           message.action === "Cliente" ? (

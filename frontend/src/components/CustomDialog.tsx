@@ -11,6 +11,9 @@ import { useActionStore } from "@/db/buffer";
 
 import DialogCustomContent from "./DialogCustomContent";
 
+//#TODO : AJEITAR OS ICONES DE FARMACEUTICO
+//E CLIENTE
+
 function CustomDialog({ type }: { type: string }) {
   const { setAction } = useActionStore();
 
@@ -26,7 +29,7 @@ function CustomDialog({ type }: { type: string }) {
         }}
       >
         {type == "Cliente" ? (
-          <div className="relative inline-flex h-14 w-[260px] items-center justify-between bg-white hover:cursor-pointer">
+          <div className="relative inline-flex h-14 items-center justify-between bg-white hover:cursor-pointer sm:w-[200px] md:w-[260px]">
             <div className="h-full w-2 bg-[#FFCD00]"></div>
             <img
               src={cliente}
@@ -37,7 +40,7 @@ function CustomDialog({ type }: { type: string }) {
             <p className="mr-9 text-xl font-bold">{type}</p>
           </div>
         ) : (
-          <div className="relative inline-flex h-14 w-[260px] items-center bg-white hover:cursor-pointer">
+          <div className="relative inline-flex h-14 items-center bg-white hover:cursor-pointer sm:w-[200px] md:w-[260px]">
             <div className="h-full w-2 bg-[#FFCD00]"></div>
             <p className="ml-2 text-xl font-bold">Farmacêutico(A)</p>
             <img
