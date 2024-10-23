@@ -140,17 +140,18 @@ interface NavLinkProps {
 function NavLink({ label, icon, route }: NavLinkProps) {
   const location = useLocation();
   const isActive = location.pathname === route;
+  const navigate = useNavigate();
 
   return (
-    <a
-      href={route}
+    <button
+      onClick={() => navigate(route)}
       className={`flex items-center space-x-1 p-2 text-sm hover:bg-yellow-500 ${
         isActive ? "bg-yellow-400 text-black" : "text-white"
       }`}
     >
       {icon}
       <span>{label}</span>
-    </a>
+    </button>
   );
 }
 
