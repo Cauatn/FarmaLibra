@@ -29,7 +29,7 @@ function CustomDialog({ type }: { type: string }) {
         }}
       >
         {type == "Cliente" ? (
-          <div className="relative inline-flex h-14 items-center justify-between bg-white hover:cursor-pointer sm:w-[200px] md:w-[260px]">
+          <div className="relative inline-flex h-14 w-[300px] items-center justify-between bg-white hover:cursor-pointer md:w-[280px]">
             <div className="h-full w-2 bg-[#FFCD00]"></div>
             <img
               src={cliente}
@@ -40,7 +40,7 @@ function CustomDialog({ type }: { type: string }) {
             <p className="mr-9 text-xl font-bold">{type}</p>
           </div>
         ) : (
-          <div className="relative inline-flex h-14 items-center bg-white hover:cursor-pointer sm:w-[200px] md:w-[260px]">
+          <div className="relative inline-flex h-14 w-[300px] items-center bg-white hover:cursor-pointer md:w-[280px]">
             <div className="h-full w-2 bg-[#FFCD00]"></div>
             <p className="ml-2 text-xl font-bold">Farmacêutico(A)</p>
             <img

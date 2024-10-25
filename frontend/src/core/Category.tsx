@@ -51,7 +51,7 @@ function Category() {
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTitle className="hidden"></DialogTitle>
             <DialogTrigger
-              className={`z-0 flex h-20 w-[766px] items-center justify-center rounded-2xl ${cor} text-xl font-bold`}
+              className={`z-0 flex h-20 w-[75%] items-center justify-center rounded-2xl ${cor} font-bold lg:w-[766px]`}
             >
               {titulo}
             </DialogTrigger>
