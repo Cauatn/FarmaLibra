@@ -31,9 +31,9 @@ function Inicio() {
         alt="Elipse"
         className="absolute -top-10 left-0 h-auto w-full"
       />
-      <div className="flex flex-1 items-center">
-        <div className="relative flex w-2/3 flex-col space-y-20 p-8">
-          <div className="relative inline-flex h-14 w-[360px] items-center justify-between bg-white">
+      <div className="flex flex-col items-center md:flex-1 md:flex-row">
+        <div className="relative flex w-2/3 flex-col space-y-20 pt-14 md:p-8">
+          <div className="relative inline-flex h-14 items-center justify-start bg-white">
             <div className="h-full w-2 bg-[#FFCD00]"></div>
             <img
               src={cliente}
@@ -68,6 +68,7 @@ function Inicio() {
             <button
               className="flex w-full items-center space-x-4 rounded-lg bg-gray-100 p-3 hover:bg-gray-200"
               onMouseEnter={() => handleMouseEnter("dQw4w9WgXcQ")}
+              onTouchStart={() => handleMouseEnter("dQw4w9WgXcQ")}
               onMouseLeave={() => handleMouseLeave()}
               onClick={() => {
                 navigate("/");
@@ -101,7 +102,7 @@ function Inicio() {
           </nav>
         </div>
 
-        <div className="w-1/3 bg-gray-100 p-8">
+        <div className="mt-10 w-full bg-gray-100 p-8 md:mt-0 md:w-1/3">
           <div className="mb-8 rounded-lg bg-white p-4">
             <iframe
               src={`https://www.youtube.com/embed/${hoverVideoId}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0`}
