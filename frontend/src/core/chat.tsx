@@ -7,6 +7,8 @@ import farmaceutico from "@/assets/imagem_farmaceutico_tr.png";
 import { Item, useListVideos } from "@/db/buffer";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
+import { Dialog, DialogContent, DialogTitle } from "@/components/dialogChat";
+import { DialogDescription } from "@/components/ui/dialog";
 
 function Chat() {
   //const [, setVideos] = useState([]);
@@ -25,6 +27,23 @@ function Chat() {
     <div className="m-0 flex min-h-screen w-full flex-col bg-[#F4F4F4]">
       <Header showBack route="/inicio" />
       <div className="mx-auto mt-8 flex h-full w-full max-w-7xl flex-col space-y-4">
+        <Dialog defaultOpen>
+          <DialogContent
+            aria-describedby="explicacao"
+            className="h-[70%] max-h-full w-[80%] max-w-full border-none bg-black p-3"
+          >
+            <DialogTitle className="hidden">Explicação</DialogTitle>
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=dQw4w9WgXcQ"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+            <DialogDescription className="hidden"></DialogDescription>
+          </DialogContent>
+        </Dialog>
         <main className="relative flex flex-col items-center space-y-16">
           <div className="z-0 flex h-20 w-[75%] items-center justify-center rounded-2xl bg-white font-bold lg:w-[766px]">
             ATENDIMENTO
