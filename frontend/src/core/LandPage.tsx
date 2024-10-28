@@ -38,12 +38,17 @@ function LandPage() {
               <h1 className="mb-4 text-start text-6xl font-semibold">
                 Bem Vindo ao Farmalibras
               </h1>
-              <p className="mb-8 text-start text-xl text-gray-600">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                popularised i
+              <p className="text-md mb-8 text-start text-gray-600">
+                O programa tem como objetivo estimular o aprendizado de Língua
+                Brasileira de Sinais (Libras) pelos farmacêuticos brasileiros e
+                desenvolver ferramentas de comunicação com as pessoas surdas
+                usuárias de Libras. Esse Aplicativo traz acesso a todas os
+                instrumentos e publicações do Programa FarmaLibras. Assim, você
+                pode acessar a Ferramenta de Atendimento Farmacêutico, o
+                Vocabulário Terminográfico Farmacêutico Bilíngue
+                (Português-Libras), o Curso de Libras para Farmacêuticos,
+                ofertado pela Plataforma Edu.farma do CFF, e as demais
+                publicações do FarmaLibras.
               </p>
               <div className="inline-flex w-full justify-between space-x-4">
                 <Button className="h-11 rounded-md bg-yellow-400 px-8 py-5 text-white hover:bg-gray-800">
