@@ -4,7 +4,7 @@ import CustomDialog from "@/components/CustomDialog";
 
 import cliente from "@/assets/imagem_cliente.png";
 import farmaceutico from "@/assets/imagem_farmaceutico_tr.png";
-import { Item, useListVideos } from "@/db/buffer";
+import { Item, useDialogState, useListVideos } from "@/db/buffer";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/dialogChat";
@@ -12,6 +12,7 @@ import { DialogDescription } from "@/components/ui/dialog";
 
 function Chat() {
   //const [, setVideos] = useState([]);
+  const { isOpen } = useDialogState();
 
   // useEffect(() => {
   //   fetch("http://127.0.0.1:8000/videos/")
@@ -27,7 +28,7 @@ function Chat() {
     <div className="m-0 flex min-h-screen w-full flex-col bg-[#F4F4F4]">
       <Header showBack route="/inicio" />
       <div className="mx-auto mt-8 flex h-full w-full max-w-7xl flex-col space-y-4">
-        <Dialog defaultOpen>
+        <Dialog open={isOpen}>
           <DialogContent
             aria-describedby="explicacao"
             className="h-[70%] max-h-full w-[80%] max-w-full border-none bg-black p-3"

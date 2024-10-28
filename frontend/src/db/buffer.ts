@@ -34,3 +34,15 @@ export const useListVideos = create<StringArrayState>((set) => ({
       items: state.items.filter((item) => item.videoId !== videoId),
     })),
 }));
+
+interface DialogState {
+  isOpen: boolean;
+  openDialog: () => void;
+  closeDialog: () => void;
+}
+
+export const useDialogState = create<DialogState>((set) => ({
+  isOpen: true,
+  openDialog: () => set({ isOpen: true }),
+  closeDialog: () => set({ isOpen: false }),
+}));
