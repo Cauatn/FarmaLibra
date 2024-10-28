@@ -51,7 +51,7 @@ function Header({ showBack, route }: { showBack?: boolean; route?: string }) {
               route="/chat"
             />
             <NavButton
-              label="ÁREA DE APRENDIZADO"
+              label="VOCABULARIO"
               icon={<Share2Icon className="h-4 w-4" />}
               route="#"
             />
@@ -86,7 +86,7 @@ function Header({ showBack, route }: { showBack?: boolean; route?: string }) {
               route="/chat"
             />
             <NavLink
-              label="ÁREA DE APRENDIZADO"
+              label="VOCABULARIO"
               icon={<Share2Icon className="h-4 w-4" />}
               route="#"
             />
